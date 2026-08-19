@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processos - Unidade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body { 
+            background-color: var(--background-color); 
+        }
+
+        .text-bordo { color: var(--primary-color) !important; }
+        
+        .btn-voltar {
+            color: #444;
+            border: 1px solid var(--gray-accent);
+            background-color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem; 
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px; 
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn-voltar:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+        }
+
+        .btn-detalhes {
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            background-color: transparent;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem; 
+            padding: 4px 12px; 
+            border-radius: var(--border-radius);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-detalhes:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .btn-outline-bordo {
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            background-color: transparent;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: var(--border-radius);
+            text-transform: uppercase;
+        }
+        .btn-outline-bordo:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+        .btn-outline-secondary {
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: var(--border-radius);
+            text-transform: uppercase;
+        }
+
+        .process-card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 12px 20px; 
+            margin-bottom: 8px; 
+            border: 1px solid var(--gray-accent);
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .process-card:hover {
+            background-color: #fcfcfc;
+            border-color: #b0b8c1;
+        }
+        .process-info {
+            display: flex;
+            align-items: center;
+        }
+        .process-type {
+            font-weight: 700;
+            color: #555;
+            margin-right: 6px;
+            font-size: 0.8rem; 
+            text-transform: uppercase;
+        }
+        .process-name {
+            color: #222;
+            font-size: 0.95rem; 
+            font-weight: 500;
+        }
+
+        .modal-content {
+            border-radius: var(--border-radius);
+        }
+        .box-institucional {
+            background-color: #f8f9fa;
+            border: 1px solid var(--gray-accent);
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .process-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .btn-detalhes { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="institucional-header m-0" style="margin-bottom: 50px !important;">
+        <div class="header-content container">
+            <div class="header-left">
+                <img src="img/logo_TJAC_h.png" alt="Logo Institucional" class="logo">
+                <div class="header-titles">
+                    <h1>TRANSFORMAÇÃO ORGANIZACIONAL</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <p>SUBSECRETARIA DE TRANSFORMAÇÃO ORGANIZACIONAL - SUTOR</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="max-width: 1200px; margin-bottom: 60px;">
+        
+        <div class="mb-4 d-flex flex-column align-items-start">
+            <h2 class="text-bordo fw-bold mb-2" id="titulo-unidade" style="font-size: 1.5rem; letter-spacing: 0.2px;">Carregando unidade...</h2>
+            
+            <!-- Texto de orientação ao usuário -->
+            <p style="color: #555; font-size: 0.95rem; margin-bottom: 20px; max-width: 900px;">
+                Abaixo estão listados os processos e subprocessos de trabalho mapeados e validados desta unidade. Clique em <strong>VER DETALHES</strong> para consultar a documentação oficial, incluindo fluxogramas, procedimentos operacionais padrão (POPs) e análises de risco.
+            </p>
+
+            <a href="index.html" class="btn-voltar">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+        </div>
+
+        <div id="lista-processos">
+            <div class="text-center text-muted my-5 py-5">
+                <div class="spinner-border text-secondary mb-3" role="status"></div>
+                <div class="text-uppercase" style="font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;">Buscando processos de trabalho...</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal de Detalhes -->
+    <div class="modal fade" id="modalDetalhes" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content shadow-sm border-0">
+                
+                <div class="modal-header bg-white border-bottom-0 pb-0 pt-4 px-4">
+                    <div>
+                        <h4 class="modal-title fw-bold text-dark mt-1" id="m-titulo" style="font-size: 1.3rem;">Nome</h4>
+                        <small class="text-muted d-block mt-1" id="m-subtitulo" style="font-size: 0.85rem;">Hierarquia</small>
+                    </div>
+                    <button type="button" class="btn-close align-self-start" data-bs-dismiss="modal"></button>
+                </div>
+                
+                <div class="modal-body px-4 pt-4 pb-4">
+                    <div class="d-flex align-items-center mb-4 p-3 box-institucional">
+                        <div class="w-50 border-end border-light pe-2">
+                            <small class="text-muted text-uppercase fw-bold d-block mb-1" style="font-size: 0.7rem; letter-spacing: 0.5px;">ID Documento</small>
+                            <span id="m-id" class="fw-medium text-dark fs-6"></span>
+                        </div>
+                        <div class="w-50 ps-3">
+                            <small class="text-muted text-uppercase fw-bold d-block mb-1" style="font-size: 0.7rem; letter-spacing: 0.5px;">Responsável</small>
+                            <span id="m-resp" class="text-dark fs-6"></span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <small class="text-bordo text-uppercase fw-bold d-block mb-3" style="font-size: 0.8rem; letter-spacing: 0.5px;">Documentação e Anexos</small>
+                        <div id="m-links" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVCW0QyFL-HilGH91i5A86foXuSA5eAdc6gA2cQxQ5QukI53WwajYrDidZIKJg2yabzQ/exec'; 
+
+        let dadosUnidade = [];
+        let modalInstance;
+
+        function isSubprocesso(p) {
+            return p['Subprocesso'] && String(p['Subprocesso']).trim() !== '' && String(p['Subprocesso']).trim().toLowerCase() !== 'n/a' && String(p['Subprocesso']).trim() !== '-';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            modalInstance = new bootstrap.Modal(document.getElementById('modalDetalhes'));
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const sigla = urlParams.get('sigla');
+
+            if (sigla) {
+                document.getElementById('titulo-unidade').innerText = sigla;
+                carregarDados(sigla);
+            } else {
+                document.getElementById('titulo-unidade').innerText = 'Unidade não identificada';
+                document.getElementById('lista-processos').innerHTML = `
+                    <div class="alert alert-danger" style="border-radius: 2px;">Erro: Nenhuma sigla informada na URL. Por favor, volte ao início e tente novamente.</div>
+                `;
+            }
+        });
+
+        async function carregarDados(sigla) {
+            try {
+                const response = await fetch(`${APPS_SCRIPT_URL}?api=true&unidade=${sigla}`);
+                const dados = await response.json();
+                
+                dadosUnidade = dados.filter(d => d['Situação'] === 'Validado');
+
+                if (dadosUnidade.length > 0) {
+                    document.getElementById('titulo-unidade').innerText = dadosUnidade[0]['Unidade'] || sigla;
+                    
+                    let htmlLista = '';
+                    
+                    dadosUnidade.forEach((p, index) => {
+                        const isSub = isSubprocesso(p);
+                        const tipo = isSub ? 'Subprocesso:' : 'Processo:';
+                        const nome = isSub ? p['Subprocesso'] : p['Processo de Trabalho'];
+
+                        htmlLista += `
+                            <div class="process-card">
+                                <div class="process-info">
+                                    <span class="process-type">${tipo}</span>
+                                    <span class="process-name">${nome}</span>
+                                </div>
+                                <button class="btn-detalhes" onclick="abrirDetalhes(${index})">
+                                    <i class="bi bi-card-text me-1"></i> Ver Detalhes
+                                </button>
+                            </div>
+                        `;
+                    });
+
+                    document.getElementById('lista-processos').innerHTML = htmlLista;
+                } else {
+                    document.getElementById('lista-processos').innerHTML = `
+                        <div class="process-card justify-content-center text-muted">
+                            Nenhum processo mapeado e validado no momento.
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('lista-processos').innerHTML = `
+                    <div class="alert alert-danger" style="border-radius: 2px;">Erro ao carregar os dados do sistema. Tente novamente mais tarde.</div>
+                `;
+            }
+        }
+
+        function abrirDetalhes(index) {
+            const proc = dadosUnidade[index];
+            const isSub = isSubprocesso(proc);
+            
+            const titulo = isSub ? proc['Subprocesso'] : proc['Processo de Trabalho'];
+            const hierarquia = isSub ? `Subprocesso de: ${proc['Processo de Trabalho']}` : `Macroprocesso: ${proc['Macroprocesso']}`;
+            
+            document.getElementById('m-titulo').innerText = titulo || '-';
+            document.getElementById('m-subtitulo').innerText = hierarquia;
+            document.getElementById('m-id').innerText = proc['ID'] || 'Sem ID';
+            document.getElementById('m-resp').innerText = proc['Responsável'] || 'Não definido';
+            
+            let links = '';
+            
+            const numSei = proc['Link do SEI'] || proc['Processo SEI'];
+            if(numSei) {
+                links += `<span class="btn btn-sm btn-outline-bordo cursor-default mb-1 me-1"><i class="bi bi-hash me-1"></i> SEI: ${numSei}</span>`;
+            } else {
+                links += `<span class="btn btn-sm btn-outline-secondary disabled mb-1 me-1" style="opacity: 0.5;"><i class="bi bi-hash me-1"></i> Sem número SEI</span>`;
+            }
+
+            const popRaw = String(proc['Link do POP'] || "");
+            const popArray = popRaw.split(' | ').filter(url => url.trim() !== "");
+            if(popArray.length > 0) {
+                popArray.forEach((url, i) => {
+                    links += `<a href="${url}" target="_blank" class="btn btn-sm btn-outline-bordo mb-1 me-1"><i class="bi bi-file-text me-1"></i> POP ${popArray.length > 1 ? i+1 : ''}</a>`;
+                });
+            } else {
+                links += `<button class="btn btn-sm btn-outline-secondary disabled mb-1 me-1" style="opacity: 0.5;"><i class="bi bi-file-text me-1"></i> Sem POP</button>`;
+            }
+
+            const mkBtnUrl = (url, icone, texto) => {
+                return url ? `<a href="${url}" target="_blank" class="btn btn-sm btn-outline-bordo mb-1 me-1"><i class="bi ${icone} me-1"></i> ${texto}</a>` 
+                           : `<button class="btn btn-sm btn-outline-secondary disabled mb-1 me-1" style="opacity: 0.5;"><i class="bi ${icone} me-1"></i> Sem ${texto}</button>`;
+            };
+            
+            links += mkBtnUrl(proc['Link do Fluxograma'], 'bi-diagram-3', 'Fluxograma');
+            links += mkBtnUrl(proc['Link da Análise de Risco'], 'bi-shield-check', 'Análise de Riscos');
+            
+            document.getElementById('m-links').innerHTML = links;
+            modalInstance.show();
+        }
+    </script>
+</body>
+</html>

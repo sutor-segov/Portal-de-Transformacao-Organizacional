@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Transformação Organizacional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="institucional-header">
+        <div class="header-content">
+            <div class="header-left">
+                <img src="img/logo_TJAC_h.png" alt="Logo Institucional" class="logo">
+                <div class="header-titles">
+                    <h1>TRANSFORMAÇÃO ORGANIZACIONAL</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <p>SUBSECRETARIA DE TRANSFORMAÇÃO ORGANIZACIONAL - SUTOR</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="#cadeia-valor" class="nav-link">Cadeia de Valor</a>
+            <a href="#arvore-macroprocessos" class="nav-link">Árvore de Macroprocessos</a>
+            <a href="#processos-trabalho" class="nav-link">Processos de Trabalho</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <section class="content-section intro-section">
+            <p class="m-0">
+                Este portal é o ambiente oficial de Gestão por Processos e Governança do TJAC, em cumprimento à 
+                <a href="https://juslaboris.tst.jus.br/bitstream/handle/20.500.12178/267683/2026_res0692_cnj.pdf?sequence=1&isAllowed=y" target="_blank" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">Resolução CNJ nº 692/2026</a>, 
+                que institui a Estratégia Nacional do Poder Judiciário para o sexênio 2027-2032 e substitui o ciclo anterior da 
+                <a href="https://atos.cnj.jus.br/files/compilado1802422022060962a235c29d678.pdf" target="_blank" style="color: #555; text-decoration: underline;">Resolução CNJ nº 325/2020</a>, 
+                este ambiente reúne a Cadeia de Valor, a Árvore de Macroprocessos e o repositório oficial de Processos de Trabalho.<br><br> Consulte fluxogramas, Procedimentos Operacionais Padrão (POPs) e mapeamentos de risco que garantem a padronização e a eficiência da prestação jurisdicional.
+            </p>
+        </section>
+
+        <section class="content-section" id="cadeia-valor">
+            <h2 class="section-title mb-1">Cadeia de Valor - TJAC</h2>
+            <p style="color: #555; font-size: 0.95rem; margin-bottom: 25px; margin-top: 0; margin-left: 41px;">A representação visual de como o Tribunal organiza suas atividades operacionais, de apoio e de governança para gerar valor à sociedade.</p>
+            <div class="image-container">
+                <img src="img/cadeia_valor.png" alt="Cadeia de Valor - TJAC" class="responsive-img">
+            </div>
+        </section>
+
+        <section class="content-section" id="arvore-macroprocessos">
+            <h2 class="section-title mb-1">Árvore de Macroprocessos</h2>
+            <p style="color: #555; font-size: 0.95rem; margin-bottom: 25px; margin-top: 0; margin-left: 16px;">A Árvore de Processos é o mapa visual que detalha o funcionamento operacional do Poder Judiciário do Estado do Acre. Ela está estruturada a partir da Cadeia de Valor (representada pelas barras vermelhas abaixo), que organiza as grandes áreas de atuação em atividades finalísticas, de apoio e de governança. Seu propósito é conferir transparência à estrutura do TJAC e facilitar a gestão contínua.</p>
+            <div class="embed-container diagrams-embed">
+                <iframe src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&zoom=1.2&title=MENU%20%C3%81RVORE.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1vaYRhFeXhh6VX2Kf7rpwqZ76pXdAT-om%26export%3Ddownload" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        loading="lazy">
+                </iframe>
+            </div>
+        </section>
+
+        <div class="info-banner">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>A publicação de processos de trabalho se dá conforme o mapeamento e validação das unidades. Estamos em processo contínuo de mapeamento.</span>
+        </div>
+
+        <section class="content-section" id="processos-trabalho">
+            <div class="section-header-flex align-items-start">
+                <div style="flex: 1;">
+                    <h2 class="section-title mb-1">Processos de Trabalho por Unidade</h2>
+                    <p style="color: #555; font-size: 0.95rem; margin-top: 0; margin-bottom: 8px; margin-left: 16px; max-width: 95%;">Os processos de trabalho são conjuntos de atividades sequenciais e inter-relacionadas que transformam insumos em entregas de valor. Abaixo, consulte o repositório oficial com os fluxogramas, procedimentos operacionais padrão (POPs) e matrizes de risco de cada unidade.</p>
+                </div>
+                <div class="search-wrapper mt-3 mt-md-0">
+                    <i class="bi bi-search search-icon"></i>
+                    <input type="text" id="busca-unidade" class="search-input" placeholder="">
+                </div>
+            </div>
+
+            <div class="cards-grid mt-4">
+                <a href="unidade.html?sigla=SEGOV" class="card-link">
+                    <div class="card">
+                        <h3>SEGOV</h3>
+                        <p>Secretaria de Governança e Gestão Estratégica</p>
+                    </div>
+                </a>
+                
+                <a href="unidade.html?sigla=SEGOF" class="card-link">
+                    <div class="card">
+                        <h3>SEGOF</h3>
+                        <p>Secretaria de Gestão Orçamentária e Finanças</p>
+                    </div>
+                </a>
+                
+                <a href="unidade.html?sigla=SEGEP" class="card-link">
+                    <div class="card">
+                        <h3>SEGEP</h3>
+                        <p>Secretaria de Gestão de Pessoas</p>
+                    </div>
+                </a>
+
+                <a href="unidade.html?sigla=COBES" class="card-link">
+                    <div class="card">
+                        <h3>COBES</h3>
+                        <p>Coordenadoria de Bem-Estar e Saúde</p>
+                    </div>
+                </a>
+                
+                <a href="unidade.html?sigla=SELGA" class="card-link">
+                    <div class="card">
+                        <h3>SELGA</h3>
+                        <p>Secretaria de Logística e Gestão Administrativa</p>
+                    </div>
+                </a>
+                
+                <a href="unidade.html?sigla=SEINF" class="card-link">
+                    <div class="card">
+                        <h3>SEINF</h3>
+                        <p>Secretaria de Infraestrutura e Atendimento ao Usuário</p>
+                    </div>
+                </a>
+
+                <a href="unidade.html?sigla=ESJUD" class="card-link">
+                    <div class="card">
+                        <h3>ESJUD</h3>
+                        <p>Escola do Poder Judiciário do Acre</p>
+                    </div>
+                </a>
+                
+                <a href="unidade.html?sigla=SECOM" class="card-link">
+                    <div class="card">
+                        <h3>SECOM</h3>
+                        <p>Secretaria de Comunicação Social</p>
+                    </div>
+                </a>
+
+                <a href="unidade.html?sigla=GSITJ" class="card-link">
+                    <div class="card">
+                        <h3>GSITJ</h3>
+                        <p>Gabinete de Segurança Institucional</p>
+                    </div>
+                </a>
+
+                <a href="unidade.html?sigla=AUDIN" class="card-link">
+                    <div class="card">
+                        <h3>AUDIN</h3>
+                        <p>Assessoria de Auditoria Interna</p>
+                    </div>
+                </a>
+
+                <a href="unidade.html?sigla=COGMA" class="card-link">
+                    <div class="card">
+                        <h3>COGMA</h3>
+                        <p>Coordenadoria de Gestão de Memória e Arquivos</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Tribunal de Justiça do Estado do Acre. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
