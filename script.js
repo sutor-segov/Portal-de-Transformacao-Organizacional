@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, 100);
 
-    
     const diagramIframe = document.querySelector('.diagrams-embed iframe');
     if (diagramIframe) {
         diagramIframe.addEventListener('load', function() {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    
     const searchInput = document.getElementById('busca-unidade');
     
     if (searchInput) {
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             cards.forEach(link => {
                 const text = link.innerText.toLowerCase();
-                
                 
                 if (text.includes(filter)) {
                     link.style.display = ''; 
